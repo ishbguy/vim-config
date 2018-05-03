@@ -1,0 +1,167 @@
+priority -50
+
+snippet sign "Sign your work"
+/*
+ * Copyright (c) `!v strftime("%Y")` Herbert Shen <ishbguy@hotmail.com>
+ *               All Rights Reserved.
+ */
+endsnippet
+
+snippet start "Start your work"
+/*
+ * Copyright (c) `!v strftime("%Y")` Herbert Shen <ishbguy@hotmail.com>
+ *               All Rights Reserved.
+ */
+
+digraph ${1:`!p
+import random, string
+def randomword(length):
+   return ''.join(random.choice(string.ascii_lowercase) for i in range(length))
+if not snip.c:
+	name = re.sub(r'[^A-Za-z0-9]+', '_', snip.fn)
+	snip.rv = name + '_' + randomword(10)
+else:
+	snip.rv = snip.c
+`} {
+	// Define the defualt value
+	graph [
+		label = "$1", labeljust = "c", labelloc = "t";
+		fontname = "Times-Roman", fontsize = 24, fontcolor = Black;
+		rankdir = LR, ranksep = 1;
+		style = "filled", fillcolor = snow2, color = snow2, bgcolor = White;
+		center = 1;
+		//size = "1920,1080"
+		//ratio = compress;
+		//ratio = fill;
+		//concentrate = true;
+		spline="compound";
+		compound=true;
+	];
+	node [
+		fontname = "Times-Roman", fontsize = 24, fontcolor = Black;
+		style = "filled, setlinewidth(0.5)", fillcolor = gold, color = black;
+		shape = ellipse, target = "_blank";
+	];
+	edge [
+		fontname = "Times-Roman", fontsize = 24, fontcolor = Black;
+		style = "solid, setlinewidth(1)", color = black;
+		arrowsize = 1, arrowhead = normal, arrowtail = none;
+		penwidth = 1;
+	];
+
+	${VISUAL}${0:/* What to do */}
+
+}
+
+/* vim:set ft=dot ts=4 sw=4: */
+endsnippet
+
+snippet graph "Add a graph block"
+graph ${1:`!p
+import random, string
+def randomword(length):
+   return ''.join(random.choice(string.ascii_lowercase) for i in range(length))
+if not snip.c:
+	snip.rv = "graph_" + randomword(4)
+else:
+	snip.rv = snip.c
+`} {
+	label = "${2:$1}";
+	fontsize = 20;
+	${VISUAL}${0:/* What to do */}
+}
+endsnippet
+
+snippet sub "Add a subgraph block"
+subgraph ${1:`!p
+import random, string
+def randomword(length):
+   return ''.join(random.choice(string.ascii_lowercase) for i in range(length))
+if not snip.c:
+	snip.rv = "sub_" + randomword(4)
+else:
+	snip.rv = snip.c
+`} {
+	label = "${2:$1}";
+	fontsize = 10;
+	${VISUAL}${0:/* What to do */}
+}
+endsnippet
+
+snippet node "Add a node"
+${1:`!p
+import random, string
+def randomword(length):
+   return ''.join(random.choice(string.ascii_lowercase) for i in range(length))
+if not snip.c:
+	snip.rv = "node_" + randomword(4)
+else:
+	snip.rv = snip.c
+`} [shape = ${2:ellipse}, style = ${3:filled}, fillcolor = ${4:gold}, color = ${5:black}];$0
+endsnippet
+
+snippet edge "Add a edge"
+${1:`!p
+import random, string
+def randomword(length):
+   return ''.join(random.choice(string.ascii_lowercase) for i in range(length))
+if not snip.c:
+	snip.rv = "node_" + randomword(4) + " -> " + "node_" + randomword(4)
+else:
+	snip.rv = snip.c
+`} [label = "${2}", len = ${3:1.00}];$0
+endsnippet
+
+snippet title "Add a title"
+label = "${1:Graph\nDrawn by ishbguy}";
+fontsize = ${0:24};
+endsnippet
+
+snippet hrec "Add h-record"
+${1:`!p
+import random, string
+def randomword(length):
+   return ''.join(random.choice(string.ascii_lowercase) for i in range(length))
+if not snip.c:
+	snip.rv = "record_" + randomword(4)
+else:
+	snip.rv = snip.c
+`} [label = "<f0> a|<f1> b|<f2> c", shape = record];$0
+endsnippet
+
+snippet vrec "Add v-record"
+${1:`!p
+import random, string
+def randomword(length):
+   return ''.join(random.choice(string.ascii_lowercase) for i in range(length))
+if not snip.c:
+	snip.rv = "record_" + randomword(4)
+else:
+	snip.rv = snip.c
+`} [label = "{<f0> a|<f1> b|<f2> c}", shape = record, color = ${2:black}];$0
+endsnippet
+
+snippet hlab "Add  h-label" i
+<f0> a|<f1> b|<f2> c
+endsnippet
+
+snippet vlab "Add  v-label" i
+{<f0> a|<f1> b|<f2> c}
+endsnippet
+
+snippet /* "Comment" i
+/*
+ * ${VISUAL}${0}
+ */
+endsnippet
+
+snippet // "Comment" i
+/* ${VISUAL}${0} */
+endsnippet
+
+snippet { "Comment" i
+{
+	${VISUAL}${0}
+}
+endsnippet
+

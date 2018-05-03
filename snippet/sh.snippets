@@ -1,0 +1,27 @@
+priority -50
+
+snippet start "start your work"
+#! /usr/bin/env bash
+# Copyright (c) `!v strftime("%Y")` Herbert Shen <ishbguy@hotmail.com> All Rights Reserved.
+# Released under the terms of the ${1:MIT License}.
+
+VERSION="v0.0.1"
+HELP="\
+\$0 --opt xxx
+
+This program is released under the terms of $1."
+
+`!v expand('%:t:r')`() {
+    ${VISUAL}${0:# What to do}
+}
+
+[[ ${FUNCNAME[0]} == "main" ]] \
+    && `!v expand('%:t:r')` "$@"
+
+# vim:set ft=`!v &ft` ts=4 sw=4:
+endsnippet
+
+snippet sign "Sign your work"
+# Copyright (c) `!v strftime("%Y")` Herbert Shen <ishbguy@hotmail.com> All Rights Reserved.
+# Released under the terms of the ${0:MIT License}.
+endsnippet

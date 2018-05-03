@@ -1,0 +1,26 @@
+###########################################################################
+#                            TextMate Snippets                            #
+###########################################################################
+# Chnage by ishbguy@hotmail.com on 2016-09-30 09:53:30
+priority -50
+
+snippet start "Start a new file"
+#! /usr/bin/env perl
+# Copyright (c) `!v strftime("%Y")` Herbert Shen <ishbguy@hotmail.com> All Rights Reserved.
+# Released under the terms of the ${1:MIT License}.
+
+use strict;
+use warnings;
+use utf8;
+use autodie;
+use v5.10; #for say
+
+${VISUAL}${0:# What to do}
+
+# vim:set ft=`!v &ft` ts=4 sw=4:
+endsnippet
+
+snippet sign "Sign your work"
+# Copyright (c) `!v strftime("%Y")` Herbert Shen <ishbguy@hotmail.com> All Rights Reserved.
+# Released under the terms of the ${0:MIT License}.
+endsnippet

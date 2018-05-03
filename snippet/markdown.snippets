@@ -1,0 +1,20 @@
+snippet post "Add a post front matter header"
+---
+layout: post
+title: "${1:`!v strftime("%Y%m%d%H%M%S")`-Unamed-Post}"
+date: `!v strftime("%Y-%m-%d %H:%M:%S %z")`
+categories: ${2}
+tags: ${3}
+---
+
+* content
+{:toc}
+
+${VISUAL}${0}
+endsnippet
+
+snippet high "Highlight a code block"
+{% highlight ${1}%}
+${VISUAL}${2}
+{% endhighlight %}${0}
+endsnippet

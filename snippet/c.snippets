@@ -1,0 +1,78 @@
+###########################################################################
+#                            TextMate Snippets                            #
+###########################################################################
+priority -50
+
+snippet sign "Sign your work"
+/*
+ * Copyright (c) `!v strftime("%Y")` - Now Herbert Shen <ishbguy@hotmail.com>
+ *               All Rights Reserved.
+ */
+endsnippet
+
+snippet start "Start your work"
+/*
+ * Copyright (c) `!v strftime("%Y")` - Now Herbert Shen <ishbguy@hotmail.com>
+ *               All Rights Reserved.
+ */
+
+${VISUAL}${0:/* What to do */}
+
+/* vim:set ft=c ts=4 sw=4: */
+endsnippet
+#Preprocessor derective
+
+snippet inc "#include <> (Inc)"
+#include <${1:stdio}.h>
+endsnippet
+
+snippet Inc "#include local header (inc)"
+#include "${1:`!p snip.rv = snip.basename + '.h'`}"
+endsnippet
+
+snippet one "Include header one only guard"
+#ifndef ${1:`!p
+if not snip.c:
+	import random, string
+	name = re.sub(r'[^A-Za-z0-9]+','_', snip.fn).upper()
+	snip.rv = ('__%s__' % name).upper()
+else:
+	snip.rv = snip.c`}
+#define $1
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+${VISUAL}${0:/* What to do */}
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* End of include guard: $1 */
+endsnippet
+
+#Coding body.
+
+#Definition
+
+#Control Statement.
+
+snippet /* "Comment" i
+/*
+ * ${VISUAL}${0}
+ */
+endsnippet
+
+snippet // "Comment" i
+/* ${VISUAL}${0} */
+endsnippet
+
+snippet { "Comment" i
+{
+	${VISUAL}${0}
+}
+endsnippet
+
+# vim:ft=snippets:ts=4:sw=4
