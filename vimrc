@@ -12,6 +12,10 @@ let $vim_config_dir = $vim_home . '/config'
 let $vim_plugins_config_dir =  $vim_config_dir . '/plugins'
 let $vim_plugins_dir = '/samba/project/vim-plugins'
 
+if !isdirectory($vim_plugins_dir)
+    call mkdir($vim_plugins_dir, 'p')
+endif
+
 runtime! lib/mylib.vim
 runtime! lib/man.vim
 
