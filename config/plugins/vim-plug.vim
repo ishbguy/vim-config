@@ -5,6 +5,7 @@
 
 " ----- vim-plug ------------------------------ {{{
 
+
 call plug#begin($vim_plugins_dir)
 
 " Visaul Editor
@@ -32,32 +33,32 @@ Plug 'sirver/ultisnips', { 'config': $vim_plugins_config_dir . '/ultisnips.vim' 
 
 " C/C++ completion
 
-let s:ycm_core = expand($vim_plugins_dir . '/YouCompleteMe/third_party/ycmd/ycm_core.so')
-let s:file_extension = expand('%:e')
-if filereadable(s:ycm_core)
-            \ && (s:file_extension ==? 'c'
-            \ || s:file_extension ==? 'h'
-            \ || s:file_extension ==? 'cpp'
-            \ || s:file_extension ==? 'cxx'
-            \ || s:file_extension ==? 'hpp'
-            \ )
-    " YCM integration
-    Plug 'Valloric/YouCompleteMe', {
-                \ 'config': $vim_plugins_config_dir . '/YouCompleteMe.vim',
-                \ 'do': './install.py --clang-completer',
-                \ }
-    Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-else
-    " deoplete integration
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-    Plug 'Shougo/deoplete.nvim', { 'config': $vim_plugins_config_dir . '/deoplete.nvim.vim' }
-    Plug 'Shougo/deoplete-clangx', { 'config': $vim_plugins_config_dir . '/deoplete-clangx.vim' }
-    Plug 'zchee/deoplete-jedi'
+" YCM integration
+Plug 'Valloric/YouCompleteMe', {
+            \ 'for': ['c', 'cpp'],
+            \ 'config': $vim_plugins_config_dir . '/YouCompleteMe.vim',
+            \ 'do': 'sudo pacman --noconfirm -S clang && ./install.py --clang-completer --system-libclang',
+            \ }
+Plug 'rdnetto/YCM-Generator', {
+            \ 'branch': 'stable',
+            \ 'for': ['c', 'cpp'],
+            \ }
+" deoplete integration
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'Shougo/deoplete.nvim', {
+            \ 'config': $vim_plugins_config_dir . '/deoplete.nvim.vim',
+            \ 'do': 'sudo pip install --upgrade neovim',
+            \ }
+Plug 'Shougo/deoplete-clangx', {
+            \ 'config': $vim_plugins_config_dir . '/deoplete-clangx.vim',
+            \ 'do': 'sudo pacman --noconfirm -S clang',
+            \ }
+" Plug 'zchee/deoplete-jedi', { 'do': 'sudo pip install jedi' }
 
-    " conflic with YCM
-    Plug 'w0rp/ale', { 'config': $vim_plugins_config_dir . '/ale.vim' }
-endif
+" conflic with YCM
+Plug 'w0rp/ale', { 'config': $vim_plugins_config_dir . '/ale.vim' }
+
 Plug 'universal-ctags/ctags', { 'do': './autogen.sh && ./configure && make' }
 Plug 'ludovicchabant/vim-gutentags', {
             \ 'config': $vim_plugins_config_dir . '/vim-gutentags.vim',
@@ -69,6 +70,7 @@ Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/echodoc.vim', { 'config': $vim_plugins_config_dir . '/echodoc.vim' }
 Plug 'c9s/perlomni.vim'
+Plug 'davidhalter/jedi-vim', { 'do': 'sudo pip install --upgrade jedi' }
 Plug 'aklt/plantuml-syntax'
 
 " Project manager
@@ -80,6 +82,15 @@ Plug 'Yggdroot/LeaderF', {
             \ 'config': $vim_plugins_config_dir . '/LeaderF.vim',
             \ 'do': './install.sh',
             \ }
+
+if empty(glob($vim_plugins_dir . '/*'))
+    if executable('yaourt') && executable('pip')
+        PlugInstall
+    else
+        echoerr 'You need to install **yaourt** and **pip**!'
+        finish
+    endif
+endif
 
 call plug#end()
 
