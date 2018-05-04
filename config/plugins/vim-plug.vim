@@ -15,7 +15,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree', { 'config': $vim_plugins_config_dir . '/nerdtree.vim' }
 Plug 'konfekt/fastfold'
 Plug 'kshenoy/vim-signature', { 'config': $vim_plugins_config_dir . '/vim-signature.vim' }
-Plug 'aklt/plantuml-syntax'
 
 " Useful Edited Tools
 Plug 'tpope/vim-surround'
@@ -30,7 +29,6 @@ Plug 'tpope/vim-commentary'
 " Completion & Syntax Checker
 Plug 'honza/vim-snippets'
 Plug 'sirver/ultisnips', { 'config': $vim_plugins_config_dir . '/ultisnips.vim' }
-Plug 'c9s/perlomni.vim'
 
 " C/C++ completion
 
@@ -70,6 +68,8 @@ Plug 'vim-scripts/OmniCppComplete', { 'config': $vim_plugins_config_dir . '/Omni
 Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/echodoc.vim', { 'config': $vim_plugins_config_dir . '/echodoc.vim' }
+Plug 'c9s/perlomni.vim'
+Plug 'aklt/plantuml-syntax'
 
 " Project manager
 Plug 'tpope/vim-fugitive', { 'config': $vim_plugins_config_dir . '/vim-fugitive.vim' }
