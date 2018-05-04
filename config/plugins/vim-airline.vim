@@ -21,6 +21,7 @@ let g:airline_symbols       = {
             \ 'space'      : ' ',
             \ 'spell'      : '$',
             \ 'whitespace' : '' ,
+            \ 'ellipsis'   : '@'
             \ }
 let g:airline_mode_map = {
             \ '__' : '-',
