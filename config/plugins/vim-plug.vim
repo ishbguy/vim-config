@@ -5,15 +5,7 @@
 
 " ----- vim-plug ------------------------------ {{{
 
-if empty(glob($vim_home . '/autoload/plug.vim'))
-    silent !curl -fLo $vim_home/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd install_vim_plugins VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
 call plug#begin($vim_plugins_dir)
-
-Plug 'junegunn/vim-plug', { 'frozen': '1' }
 
 " Visaul Editor
 Plug 'mhinz/vim-startify'
