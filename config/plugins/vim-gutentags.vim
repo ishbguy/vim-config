@@ -15,6 +15,9 @@ endif
 if executable('gtags-cscope') && executable('gtags')
     let g:gutentags_modules += ['gtags_cscope']
     let g:gutentags_auto_add_gtags_cscope = 0
+    let $GTAGSLABEL = 'native-pygments'
+    let $GTAGSCONF = $vim_plugins_config_dir . '/gtags.conf'
+    runtime config/plugins/gtags.vim
 endif
 
 let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
@@ -27,7 +30,5 @@ if !isdirectory(s:vim_tags)
     silent! call mkdir(s:vim_tags, 'p')
 endif
 let g:gutentags_cache_dir = s:vim_tags
-
-runtime config/plugins/gtags.vim
 
 " vim:set ft=vim ts=4 sw=4:

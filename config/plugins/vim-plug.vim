@@ -62,7 +62,7 @@ Plug 'w0rp/ale', { 'config': $vim_plugins_config_dir . '/ale.vim' }
 Plug 'universal-ctags/ctags', { 'do': './autogen.sh && ./configure && make' }
 Plug 'ludovicchabant/vim-gutentags', {
             \ 'config': $vim_plugins_config_dir . '/vim-gutentags.vim',
-            \ 'do': 'yaourt --noconfirm -S global',
+            \ 'do': 'yaourt --noconfirm -S global && sudo pip install pygments',
             \ }
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'vim-scripts/OmniCppComplete', { 'config': $vim_plugins_config_dir . '/OmniCppComplete.vim' }
