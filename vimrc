@@ -1,5 +1,5 @@
-" Copyright (c) 2018 - Now Herbert Shen <ishbguy@hotmail.com>
-"               All Rights Reserved.
+" Copyright (c) 2018 Herbert Shen <ishbguy@hotmail.com> All Rights Reserved.
+" Released under the terms of the MIT License.
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? 'evim'
@@ -24,6 +24,5 @@ source $vim_config_dir/keymap.vim
 source $vim_plugins_config_dir/vim-plug.vim
 
 " }}}
-
 
 " vim:set ft=vim ts=4 sw=4:

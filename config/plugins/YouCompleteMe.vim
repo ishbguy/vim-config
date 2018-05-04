@@ -1,5 +1,5 @@
-" Copyright (c) 2018 - Now Herbert Shen <ishbguy@hotmail.com>
-"               All Rights Reserved.
+" Copyright (c) 2018 Herbert Shen <ishbguy@hotmail.com> All Rights Reserved.
+" Released under the terms of the MIT License.
 
 " let g:ycm_confirm_extra_conf = 1
 let g:ycm_add_preview_to_completeopt = 0

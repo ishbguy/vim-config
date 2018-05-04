@@ -1,5 +1,5 @@
-" Copyright (c) 2018 - Now Herbert Shen <ishbguy@hotmail.com>
-"               All Rights Reserved.
+" Copyright (c) 2018 Herbert Shen <ishbguy@hotmail.com> All Rights Reserved.
+" Released under the terms of the MIT License.
 
 let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
 let g:gutentags_ctags_tagfile = 'tags'

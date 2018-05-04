@@ -1,5 +1,5 @@
-" Copyright (c) 2018 - Now Herbert Shen <ishbguy@hotmail.com>
-"               All Rights Reserved.
+" Copyright (c) 2018 Herbert Shen <ishbguy@hotmail.com> All Rights Reserved.
+" Released under the terms of the MIT License.
 
 let s:windows = has('win32') || has('win64') || has('win16') || has('win95')
 

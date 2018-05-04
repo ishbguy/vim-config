@@ -1,7 +1,5 @@
-" Name: mylib.vim
-" Desc: This my useful vim function library.
-" Auth: ishbguy
-" Date: 2016-01-11 22:49:11
+" Copyright (c) 2018 Herbert Shen <ishbguy@hotmail.com> All Rights Reserved.
+" Released under the terms of the MIT License.
 
 " MyChangeFormat(): This function can used to change the fileformat
 " platform: Specify the target platform fileformat to change.
