@@ -25,3 +25,15 @@ snippet sign "Sign your work"
 # Copyright (c) `!v strftime("%Y")` Herbert Shen <ishbguy@hotmail.com> All Rights Reserved.
 # Released under the terms of the ${0:MIT License}.
 endsnippet
+
+snippet guard "source guard"
+# only allow sourced
+[[ ${BASH_SOURCE[0]} == "\$0" ]] \
+    && { echo "Only allow to be sourced, not for running." >&2; exit 1; }
+# source guard
+[[ ${0:$`!v expand('%:t:r')`_SOURCED} -eq 1 ]] && return
+endsnippet
+
+snippet mode "modeline setting"
+# vim:set ft=`!v &ft` ts=4 sw=4:
+endsnippet
