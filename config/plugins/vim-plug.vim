@@ -54,7 +54,8 @@ Plug 'Shougo/deoplete-clangx', {
             \ 'config': $vim_plugins_config_dir . '/deoplete-clangx.vim',
             \ 'do': 'sudo pacman --noconfirm -S clang',
             \ }
-" Plug 'zchee/deoplete-jedi', { 'do': 'sudo pip install jedi' }
+Plug 'zchee/deoplete-jedi', { 'do': 'sudo pip install jedi' }
+" Plug 'davidhalter/jedi-vim', { 'do': 'sudo pip install --upgrade jedi' }
 
 " conflic with YCM
 Plug 'w0rp/ale', { 'config': $vim_plugins_config_dir . '/ale.vim' }
@@ -70,7 +71,6 @@ Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/echodoc.vim', { 'config': $vim_plugins_config_dir . '/echodoc.vim' }
 Plug 'c9s/perlomni.vim'
-Plug 'davidhalter/jedi-vim', { 'do': 'sudo pip install --upgrade jedi' }
 Plug 'aklt/plantuml-syntax'
 
 " Project manager
