@@ -59,9 +59,13 @@ declare -gr $2_ABS_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 source "$$2_ABS_DIR/${3:../lib/test.sh}"
 
 ${4:`!v substitute(expand('%:t:r'), '[^[:alnum:]]', '_', 'g')`}() {
-    # setup and teardown
-    tmp=$(mktemp)
-    trap 'rm -rf $tmp' RETURN EXIT SIGINT
+    setup() {
+        tmp=$(mktemp)
+    }; setup
+
+    teardown() {
+        rm -rf "$tmp"
+    }; trap 'teardown' RETURN EXIT SIGINT
 
     ${VISUAL}${0:# What to do}
 }
@@ -71,7 +75,7 @@ run_tests() {
 }
 
 [[ ${FUNCNAME[0]} == "main" ]] \
-    && run_tests "$@" && summary
+    && { run_tests "$@"; summary; }
 
 # vim:set ft=`!v &ft` ts=4 sw=4:
 endsnippet
