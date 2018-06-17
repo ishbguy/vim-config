@@ -37,7 +37,7 @@ Plug 'sirver/ultisnips', { 'config': $vim_plugins_config_dir . '/ultisnips.vim' 
 Plug 'Valloric/YouCompleteMe', {
             \ 'for': ['c', 'cpp'],
             \ 'config': $vim_plugins_config_dir . '/YouCompleteMe.vim',
-            \ 'do': 'sudo pacman --noconfirm -S clang && ./install.py --clang-completer --system-libclang',
+            \ 'do': 'yaourt --noconfirm -S clang cmake && ./install.py --clang-completer --system-libclang',
             \ }
 Plug 'rdnetto/YCM-Generator', {
             \ 'branch': 'stable',
@@ -48,14 +48,13 @@ Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'Shougo/deoplete.nvim', {
             \ 'config': $vim_plugins_config_dir . '/deoplete.nvim.vim',
-            \ 'do': 'sudo pip install --upgrade neovim',
+            \ 'do': 'yaourt --noconfirm -S python-neovim',
             \ }
 Plug 'Shougo/deoplete-clangx', {
             \ 'config': $vim_plugins_config_dir . '/deoplete-clangx.vim',
-            \ 'do': 'sudo pacman --noconfirm -S clang',
+            \ 'do': 'yaourt --noconfirm -S clang',
             \ }
-Plug 'zchee/deoplete-jedi', { 'do': 'sudo pip install jedi' }
-" Plug 'davidhalter/jedi-vim', { 'do': 'sudo pip install --upgrade jedi' }
+Plug 'zchee/deoplete-jedi', { 'do': 'yaourt --noconfirm -S python-jedi' }
 
 " conflic with YCM
 Plug 'w0rp/ale', { 'config': $vim_plugins_config_dir . '/ale.vim' }
@@ -63,7 +62,7 @@ Plug 'w0rp/ale', { 'config': $vim_plugins_config_dir . '/ale.vim' }
 Plug 'universal-ctags/ctags', { 'do': './autogen.sh && ./configure && make' }
 Plug 'ludovicchabant/vim-gutentags', {
             \ 'config': $vim_plugins_config_dir . '/vim-gutentags.vim',
-            \ 'do': 'yaourt --noconfirm -S global && sudo pip install pygments',
+            \ 'do': 'yaourt --noconfirm -S global python-pygments',
             \ }
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'vim-scripts/OmniCppComplete', { 'config': $vim_plugins_config_dir . '/OmniCppComplete.vim' }
@@ -84,10 +83,10 @@ Plug 'Yggdroot/LeaderF', {
             \ }
 
 if empty(glob($vim_plugins_dir . '/*'))
-    if executable('yaourt') && executable('pip')
+    if executable('yaourt')
         PlugInstall
     else
-        echoerr 'You need to install **yaourt** and **pip**!'
+        echoerr 'You need to install **yaourt**!'
         finish
     endif
 endif
