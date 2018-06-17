@@ -7,16 +7,20 @@ snippet start "start your work"
 
 # source guard
 [[ $${2:`!v substitute(toupper(expand('%:t:r')), '[^[:alnum:]]', '_', 'g')`}_SOURCED -eq 1 ]] && return
-declare -gr $2_SOURCED=1
-declare -gr $2_ABS_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
-
-VERSION="v0.0.1"
-HELP="\
-\$0 --opt xxx
-
-This program is released under the terms of $1."
+declare -r $2_SOURCED=1
+declare -r $2_ABS_SRC="$(realpath "${BASH_SOURCE[0]}")"
+declare -r $2_ABS_DIR="$(dirname "$$2_ABS_SRC")"
 
 ${3:`!v substitute(expand('%:t:r'), '[^[:alnum:]]', '_', 'g')`}() {
+    local PRONAME=`!v expand('%:t:r')`
+    local VERSION="v0.0.1"
+    local HELP=$(cat <<EOF
+$PRONAME $VERSION
+$PRONAME --opt xxx
+
+This program is released under the terms of $1.
+EOF
+)
     ${VISUAL}${0:# What to do}
 }
 
@@ -36,8 +40,9 @@ snippet lib "start a library file"
     && { echo "Only allow to be sourced, not for running." >&2; exit 1; }
 # source guard
 [[ $${2:`!v substitute(toupper(expand('%:t:r')), '[^[:alnum:]]', '_', 'g')`}_SOURCED -eq 1 ]] && return
-declare -gr $2_SOURCED=1
-declare -gr $2_ABS_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
+declare -r $2_SOURCED=1
+declare -r $2_ABS_SRC="$(realpath "${BASH_SOURCE[0]}")"
+declare -r $2_ABS_DIR="$(dirname "$$2_ABS_SRC")"
 
 ${3:`!v substitute(expand('%:t:r'), '[^[:alnum:]]', '_', 'g')`}() {
     ${VISUAL}${0:# What to do}
@@ -53,29 +58,33 @@ snippet test "start a test file"
 
 # source guard
 [[ $${2:`!v substitute(toupper(expand('%:t:r')), '[^[:alnum:]]', '_', 'g')`}_SOURCED -eq 1 ]] && return
-declare -gr $2_SOURCED=1
-declare -gr $2_ABS_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
+declare -r $2_SOURCED=1
+declare -r $2_ABS_SRC="$(realpath "${BASH_SOURCE[0]}")"
+declare -r $2_ABS_DIR="$(dirname "$$2_ABS_SRC")"
 
-source "$$2_ABS_DIR/${3:../lib/test.sh}"
+source "$$2_ABS_DIR/${3:../baux/lib/test.sh}"
 
 ${4:`!v substitute(expand('%:t:r'), '[^[:alnum:]]', '_', 'g')`}() {
-    setup() {
+    $4_setup() {
         tmp=$(mktemp)
-    }; setup
+    }; $4_setup
 
-    teardown() {
+    $4_teardown() {
         rm -rf "$tmp"
-    }; trap 'teardown' RETURN EXIT SIGINT
+    }; trap '$4_teardown' RETURN EXIT SIGINT
 
     ${VISUAL}${0:# What to do}
 }
 
-run_tests() {
-    $4
-}
-
-[[ ${FUNCNAME[0]} == "main" ]] \
-    && { run_tests "$@"; summary; }
+if [[ ${FUNCNAME[0]} == "main" ]]; then
+    search_test_cases() {
+        sed -rn 's/(^test[-_][[:alnum:]_-]+)(\s+)?\((\s+)?\).*/\1/p' "\$1"
+    }
+    run_tests() { for cs in "$@"; do "$cs"; done; }
+    test_cases=($(search_test_cases "$$2_ABS_SRC"))
+    run_tests "${test_cases[@]}"
+    summary
+fi
 
 # vim:set ft=`!v &ft` ts=4 sw=4:
 endsnippet
@@ -95,6 +104,7 @@ snippet guard "source guard"
     && { echo "Only allow to be sourced, not for running." >&2; exit 1; }
 # source guard
 [[ $${1:`!v substitute(toupper(expand('%:t:r')), '[^[:alnum:]]', '_', 'g')`}_SOURCED -eq 1 ]] && return
-declare -gr $1_SOURCED=1
-declare -gr $1_ABS_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
+declare -r $1_SOURCED=1
+declare -r $1_ABS_SRC="$(realpath "${BASH_SOURCE[0]}")"
+declare -r $1_ABS_DIR="$(dirname "$$1_ABS_SRC")"
 endsnippet
