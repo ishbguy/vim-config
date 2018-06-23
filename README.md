@@ -1,9 +1,7 @@
 # [vim-config](https://github.com/ishbguy/vim-config)
 
-[![Version][versvg]][ver] [![License][licsvg]][lic]
+[![License][licsvg]][lic]
 
-[versvg]: https://img.shields.io/badge/version-v0.1.0-lightgrey.svg
-[ver]: https://img.shields.io/badge/version-v0.1.0-lightgrey.svg
 [licsvg]: https://img.shields.io/badge/license-MIT-green.svg
 [lic]: https://github.com/ishbguy/vim-config/blob/master/LICENSE
 
@@ -12,15 +10,14 @@
 + [:art: Features](#art-features)
 + [:straight_ruler: Prerequisite](#straight_ruler-prerequisite)
 + [:rocket: Installation](#rocket-installation)
-+ [:memo: Configuration](#memo-configuration)
-+ [:notebook: Usage](#notebook-usage)
 + [:hibiscus: Contributing](#hibiscus-contributing)
 + [:boy: Authors](#boy-authors)
 + [:scroll: License](#scroll-license)
 
 ## :art: Features
 
-+ What an amazing thing!
++ Modular: keymaps, options, etc.
++ Use [vim-plug](https://github.com/junegunn/vim-plug) to manage plugins
 
 ## :straight_ruler: Prerequisite
 
@@ -33,10 +30,6 @@
 $ git clone https://github.com/ishbguy/vim-config.git ~/.vim
 $ vim -c 'PlugInstall | q'
 ```
-
-## :memo: Configuration
-
-## :notebook: Usage
 
 ## :hibiscus: Contributing
 
