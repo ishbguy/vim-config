@@ -10,7 +10,11 @@ endif
 let $vim_home = fnamemodify($MYVIMRC, ':h')
 let $vim_config_dir = $vim_home . '/config'
 let $vim_plugins_config_dir =  $vim_config_dir . '/plugins'
-let $vim_plugins_dir = '/samba/project/vim-plugins'
+let $vim_plugins_dir = $HOME . '/.vim-plugins'
+if executable('realpath')
+    let $vim_plugins_dir =
+                \ systemlist('realpath ' . $vim_home . '/..')[0] . '/vim-plugins'
+endif
 
 if !isdirectory($vim_plugins_dir)
     call mkdir($vim_plugins_dir, 'p')
