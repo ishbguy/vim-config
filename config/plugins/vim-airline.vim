@@ -36,10 +36,10 @@ let g:airline_mode_map = {
             \ 'S'  : 'S',
             \ '' : 'S',
             \ }
-let g:airline#extensions#default#layout = [
-            \ [ 'a', 'b', 'c', 'error', 'warning'],
-            \ [ 'x', 'y', 'z']
-            \ ]
+" let g:airline#extensions#default#layout = [
+"             \ [ 'a', 'b', 'c', 'error', 'warning'],
+"             \ [ 'x', 'y', 'z']
+"             \ ]
 let g:airline_skip_empty_sections = 1
 let g:airline#extensions#quickfix#quickfix_text = 'Qfx'
 let g:airline#extensions#quickfix#location_text = 'Loc'
