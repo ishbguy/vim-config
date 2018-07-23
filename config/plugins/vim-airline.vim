@@ -68,14 +68,6 @@ let g:airline#extensions#tabline#buffers_label = 'B'
 let g:airline#extensions#tabline#tabs_label = 'T'
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 
-"airline-theme
-if has('gui_running') || $DISPLAY !=# ':0.0'
-    set guifont=Droid\ Sans\ Mono\ 10
-    colorscheme solarized
-else
-    colorscheme desert
-endif
-
 " }}}
 
 " ----- airline ------------------------------ {{{

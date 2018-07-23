@@ -11,6 +11,8 @@ call plug#begin($vim_plugins_dir)
 " Visaul Editor
 Plug 'mhinz/vim-startify'
 Plug 'altercation/vim-colors-solarized'
+Plug 'tomasr/molokai'
+Plug 'rhysd/vim-color-spring-night'
 Plug 'vim-airline/vim-airline', { 'config': $vim_plugins_config_dir . '/vim-airline.vim' }
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree', { 'config': $vim_plugins_config_dir . '/nerdtree.vim' }

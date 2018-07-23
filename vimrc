@@ -27,6 +27,14 @@ source $vim_config_dir/options.vim
 source $vim_config_dir/keymap.vim
 source $vim_plugins_config_dir/vim-plug.vim
 
+"airline-theme
+if has('gui_running') || $DISPLAY !=# ':0.0'
+    set guifont=Droid\ Sans\ Mono\ 10
+    colorscheme solarized
+else
+    colorscheme spring-night
+endif
+
 " }}}
 
 " vim:set ft=vim ts=4 sw=4:
