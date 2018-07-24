@@ -28,7 +28,7 @@ source $vim_config_dir/keymap.vim
 source $vim_plugins_config_dir/vim-plug.vim
 
 "airline-theme
-if has('gui_running') || $DISPLAY !=# ':0.0'
+if has('gui_running') || $DISPLAY !=# ''
     set guifont=Droid\ Sans\ Mono\ 10
     colorscheme solarized
 else
