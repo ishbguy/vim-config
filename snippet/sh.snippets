@@ -1,7 +1,7 @@
 priority -50
 
 snippet start "start your work"
-#! /usr/bin/env bash
+#!/usr/bin/env bash
 # Copyright (c) `!v strftime("%Y")` Herbert Shen <ishbguy@hotmail.com> All Rights Reserved.
 # Released under the terms of the ${1:MIT License}.
 
@@ -31,7 +31,7 @@ EOF
 endsnippet
 
 snippet lib "start a library file"
-#! /usr/bin/env bash
+#!/usr/bin/env bash
 # Copyright (c) `!v strftime("%Y")` Herbert Shen <ishbguy@hotmail.com> All Rights Reserved.
 # Released under the terms of the ${1:MIT License}.
 
@@ -52,7 +52,7 @@ ${3:`!v substitute(expand('%:t:r'), '[^[:alnum:]]', '_', 'g')`}() {
 endsnippet
 
 snippet test "start a test file"
-#! /usr/bin/env bash
+#!/usr/bin/env bash
 # Copyright (c) `!v strftime("%Y")` Herbert Shen <ishbguy@hotmail.com> All Rights Reserved.
 # Released under the terms of the ${1:MIT License}.
 
