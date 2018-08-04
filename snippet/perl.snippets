@@ -9,14 +9,99 @@ snippet start "Start a new file"
 # Copyright (c) `!v strftime("%Y")` Herbert Shen <ishbguy@hotmail.com> All Rights Reserved.
 # Released under the terms of the ${1:MIT License}.
 
+package ${1:`!v substitute(expand('%:t:r'), '[^[:alnum:]]', '_', 'g')`};
+
+use 5.006;
+#use v5.10; #for say
+use strict;
+use warnings;
+use autodie;
+use utf8;
+
+use Exporter qw(import);
+
+our @EXPORT    = qw( ${3:$2} );
+our @EXPORT_OK = qw();
+
+our $VERSION = '0.0.1';
+
+sub ${2:$1_main}{
+	my $argc = @_;
+	my @argv = @_;
+
+	${VISUAL}${0:# What to do}
+
+	return 0;
+}
+
+$2(@ARGV) unless caller(0);
+
+# vim:set ft=`!v &ft` ts=4 sw=4:
+endsnippet
+
+snippet object "Start a new object"
+#!/usr/bin/env perl
+# Copyright (c) `!v strftime("%Y")` Herbert Shen <ishbguy@hotmail.com> All Rights Reserved.
+# Released under the terms of the ${1:MIT License}.
+
+package ${1:`!v substitute(expand('%:t:r'), '[^[:alnum:]]', '_', 'g')`};
+
+use 5.006;
+#use v5.10; #for say
 use strict;
 use warnings;
 use utf8;
-use autodie;
-use v5.10; #for say
 
-${VISUAL}${0:# What to do}
+use Moose;
+use namespace::autoclean;
 
+our $VERSION = '0.0.1';
+
+has ${2:attr} => (
+	is => 'rw',
+	isa => 'Str',
+	default => sub {''},
+);
+
+sub BUILD {
+	my $self = shift;
+
+	${VISUAL}${0:# What to do}
+}
+
+__PACKAGE__->meta->make_immutable;
+1;
+
+# vim:set ft=`!v &ft` ts=4 sw=4:
+endsnippet
+
+snippet pack "Start a new package"
+#!/usr/bin/env perl
+# Copyright (c) `!v strftime("%Y")` Herbert Shen <ishbguy@hotmail.com> All Rights Reserved.
+# Released under the terms of the ${1:MIT License}.
+
+package ${1:`!v substitute(expand('%:t:r'), '[^[:alnum:]]', '_', 'g')`};
+
+use 5.006;
+#use v5.10; #for say
+use strict;
+use warnings;
+use utf8;
+
+use Exporter qw(import);
+
+our @EXPORT    = qw( $1 );
+our @EXPORT_OK = qw();
+
+our $VERSION = '0.0.1';
+
+sub $1 {
+	my $self = shift;
+
+	${VISUAL}${0:# What to do}
+}
+
+1;
 # vim:set ft=`!v &ft` ts=4 sw=4:
 endsnippet
 
