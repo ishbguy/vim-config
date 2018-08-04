@@ -11,8 +11,8 @@ snippet start "Start a new file"
 
 package ${1:`!v substitute(expand('%:t:r'), '[^[:alnum:]]', '_', 'g')`};
 
-use 5.006;
 #use v5.10; #for say
+use 5.006;
 use strict;
 use warnings;
 use autodie;
@@ -28,6 +28,10 @@ our $VERSION = '0.0.1';
 sub ${2:$1_main}{
 	my $argc = @_;
 	my @argv = @_;
+
+	binmode STDIN,  ':encoding(utf8)';
+	binmode STDOUT, ':encoding(utf8)';
+	binmode STDERR, ':encoding(utf8)';
 
 	${VISUAL}${0:# What to do}
 
@@ -46,8 +50,8 @@ snippet object "Start a new object"
 
 package ${1:`!v substitute(expand('%:t:r'), '[^[:alnum:]]', '_', 'g')`};
 
-use 5.006;
 #use v5.10; #for say
+use 5.006;
 use strict;
 use warnings;
 use utf8;
@@ -82,8 +86,8 @@ snippet pack "Start a new package"
 
 package ${1:`!v substitute(expand('%:t:r'), '[^[:alnum:]]', '_', 'g')`};
 
-use 5.006;
 #use v5.10; #for say
+use 5.006;
 use strict;
 use warnings;
 use utf8;
