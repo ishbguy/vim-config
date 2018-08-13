@@ -59,7 +59,10 @@ Plug 'Shougo/deoplete-clangx', {
 Plug 'zchee/deoplete-jedi', { 'do': 'yaourt --noconfirm -S python-jedi' }
 
 " conflic with YCM
-Plug 'w0rp/ale', { 'config': $vim_plugins_config_dir . '/ale.vim' }
+Plug 'w0rp/ale', {
+            \ 'config': $vim_plugins_config_dir . '/ale.vim',
+            \ 'do': 'yaourt --noconfirm -S bear',
+            \ }
 
 Plug 'universal-ctags/ctags', { 'do': './autogen.sh && ./configure && make' }
 Plug 'ludovicchabant/vim-gutentags', {
