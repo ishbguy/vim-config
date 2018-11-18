@@ -30,6 +30,10 @@ ensure() {
         "${FUNCNAME[0]} '$cmd' failed." "$@"
 }
 date_cmp() { echo "$(($(date -d "\$1" +%s) - $(date -d "\$2" +%s)))"; }
+tmpfd() {
+    local -a fds=($(ls /dev/fd)) &>/dev/null
+    echo "$((${fds[$((${#fds[@]}-1))]:-99} + 1))"
+}
 pargs() {
     ensure "[[ $# -ge 3 ]]" "Need OPTIONS, ARGUMENTS and OPTSTRING"
     ensure "[[ -n \$1 && -n \$2 && -n \$3 ]]" "Args should not be empty."
@@ -48,7 +52,7 @@ pargs() {
     done
     shift $((OPTIND - 1))
 }
-chkobj() {
+require() {
     ensure "[[ $# -gt 2 ]]" "Not enough args."
     ensure "definedf \$1" "\$1 should be a defined func."
 
@@ -61,19 +65,20 @@ chkobj() {
     done
     [[ ${#miss[@]} -eq 0 ]] || die "$msg: ${miss[*]}."
 }
-chkvar() { chkobj defined "You need to define vars" "$@"; }
-chkfunc() { chkobj definedf "You need to define funcs" "$@"; }
-chktool() { chkobj has_tool "You need to install tools" "$@"; }
+require_var() { require defined "You need to define vars" "$@"; }
+require_func() { require definedf "You need to define funcs" "$@"; }
+require_tool() { require has_tool "You need to install tools" "$@"; }
 
 ${3:`!v substitute(expand('%:t:r'), '[^[:alnum:]]', '_', 'g')`}() {
     local PRONAME="$(basename "${BASH_SOURCE[0]}")"
     local VERSION="v0.0.1"
     local HELP=$(cat <<EOF
 $PRONAME $VERSION
-$PRONAME [-hv] args
+$PRONAME [-hvD] args
     
     -h  print this help message 
     -v  print version number
+    -D  turn on debug mode
 
 This program is released under the terms of MIT License.
 EOF
@@ -81,6 +86,7 @@ EOF
     local -A opts args
     pargs opts args 'hv' "$@"
     shift $((OPTIND - 1))
+    [[ ${opts[D]} ]] && set -x
     [[ ${opts[h]} ]] && usage && return 0
     [[ ${opts[v]} ]] && version && return 0
 
