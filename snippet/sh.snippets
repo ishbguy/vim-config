@@ -8,13 +8,14 @@ snippet start "start your work"
 # source guard
 [[ $${2:`!v substitute(toupper(expand('%:t:r')), '[^[:alnum:]]', '_', 'g')`}_SOURCED -eq 1 ]] && return
 declare -r $2_SOURCED=1
-declare -r $2_ABS_SRC="$(realpath "${BASH_SOURCE[0]}")"
+declare -r $2_ABS_SRC="$(readlink -f "${BASH_SOURCE[0]}")"
 declare -r $2_ABS_DIR="$(dirname "$$2_ABS_SRC")"
 
 # utilities
 EXIT_CODE=0
 warn() { echo -e "$@" >&2; ((++EXIT_CODE)); return ${WERROR:-1}; }
 die() { echo -e "$@" >&2; exit $((++EXIT_CODE)); }
+debug() { [[ $DEBUG == 1 ]] && echo "$@" || true; }
 usage() { echo -e "$HELP"; }
 version() { echo -e "$PRONAME $VERSION"; }
 defined() { declare -p "\$1" &>/dev/null; }
@@ -30,10 +31,7 @@ ensure() {
         "${FUNCNAME[0]} '$cmd' failed." "$@"
 }
 date_cmp() { echo "$(($(date -d "\$1" +%s) - $(date -d "\$2" +%s)))"; }
-tmpfd() {
-    local -a fds=($(ls /dev/fd)) &>/dev/null
-    echo "$((${fds[$((${#fds[@]}-1))]:-99} + 1))"
-}
+tmpfd() { basename <(:); }
 pargs() {
     ensure "[[ $# -ge 3 ]]" "Need OPTIONS, ARGUMENTS and OPTSTRING"
     ensure "[[ -n \$1 && -n \$2 && -n \$3 ]]" "Args should not be empty."
@@ -52,6 +50,36 @@ pargs() {
     done
     shift $((OPTIND - 1))
 }
+trap_push() {
+    ensure "[[ $# -ge 2 ]]" "Usage: trap_push 'cmds' SIGSPEC..."
+    local cmds="\$1"; shift
+    for sig in "$@"; do
+        defined "trap_$sig" || declare -ga "trap_$sig"
+        local -n ts="trap_$sig"
+        ts+=("$cmds")
+        if [[ $sig == RETURN ]]; then
+            trap "trap '$cmds; trap_pop RETURN' RETURN" RETURN 
+        else
+            trap "$cmds" "$sig"
+        fi
+    done
+}
+trap_pop() {
+    ensure "[[ $# -ge 1 ]]" "Usage: trap_pop SIGSPEC..."
+    for sig in "$@"; do
+        defined "trap_$sig" || declare -ga "trap_$sig"
+        local -n ts="trap_$sig"
+        local cmds
+        # pop cmds
+        ts=("${ts[@]:0:$((${#ts[@]}-1))}")
+        [[ ${#ts[@]} -gt 0 ]] && cmds="${ts[-1]}"
+        if [[ $sig == RETURN ]]; then
+            trap "trap '$cmds' RETURN" RETURN
+        else
+            trap "$cmds" "$sig"
+        fi
+    done
+}
 require() {
     ensure "[[ $# -gt 2 ]]" "Not enough args."
     ensure "definedf \$1" "\$1 should be a defined func."
@@ -68,6 +96,7 @@ require() {
 require_var() { require defined "You need to define vars" "$@"; }
 require_func() { require definedf "You need to define funcs" "$@"; }
 require_tool() { require has_tool "You need to install tools" "$@"; }
+inicfg() { require_tool git; git config --file "$@"; }
 
 ${3:`!v substitute(expand('%:t:r'), '[^[:alnum:]]', '_', 'g')`}() {
     local PRONAME="$(basename "${BASH_SOURCE[0]}")"
@@ -83,8 +112,8 @@ $PRONAME [-hvD] args
 This program is released under the terms of MIT License.
 EOF
 )
-    local -A opts args
-    pargs opts args 'hv' "$@"
+    local -A opts=() args=()
+    pargs opts args 'hvD' "$@"
     shift $((OPTIND - 1))
     [[ ${opts[D]} ]] && set -x
     [[ ${opts[h]} ]] && usage && return 0
@@ -109,7 +138,7 @@ snippet lib "start a library file"
 # source guard
 [[ $${2:`!v substitute(toupper(expand('%:t:r')), '[^[:alnum:]]', '_', 'g')`}_SOURCED -eq 1 ]] && return
 declare -r $2_SOURCED=1
-declare -r $2_ABS_SRC="$(realpath "${BASH_SOURCE[0]}")"
+declare -r $2_ABS_SRC="$(readlink -f "${BASH_SOURCE[0]}")"
 declare -r $2_ABS_DIR="$(dirname "$$2_ABS_SRC")"
 
 ${3:`!v substitute(expand('%:t:r'), '[^[:alnum:]]', '_', 'g')`}() {
@@ -127,7 +156,7 @@ snippet test "start a test file"
 # source guard
 [[ $${2:`!v substitute(toupper(expand('%:t:r')), '[^[:alnum:]]', '_', 'g')`}_SOURCED -eq 1 ]] && return
 declare -r $2_SOURCED=1
-declare -r $2_ABS_SRC="$(realpath "${BASH_SOURCE[0]}")"
+declare -r $2_ABS_SRC="$(readlink -f "${BASH_SOURCE[0]}")"
 declare -r $2_ABS_DIR="$(dirname "$$2_ABS_SRC")"
 
 source "$$2_ABS_DIR/${3:../baux/lib/test.sh}"
@@ -144,7 +173,7 @@ ${4:`!v substitute(expand('%:t:r'), '[^[:alnum:]]', '_', 'g')`}() {
     ${VISUAL}${0:# What to do}
 }
 
-if [[ ${FUNCNAME[0]} == "main" ]]; then
+if [[ ${FUNCNAME[0]} == "main" || ${FUNCNAME[0]} == "" ]]; then
     search_test_cases() {
         sed -rn 's/(^test[-_][[:alnum:]_-]+)(\s+)?\((\s+)?\).*/\1/p' "\$1"
     }
@@ -173,6 +202,6 @@ snippet guard "source guard"
 # source guard
 [[ $${1:`!v substitute(toupper(expand('%:t:r')), '[^[:alnum:]]', '_', 'g')`}_SOURCED -eq 1 ]] && return
 declare -r $1_SOURCED=1
-declare -r $1_ABS_SRC="$(realpath "${BASH_SOURCE[0]}")"
+declare -r $1_ABS_SRC="$(readlink -f "${BASH_SOURCE[0]}")"
 declare -r $1_ABS_DIR="$(dirname "$$1_ABS_SRC")"
 endsnippet
