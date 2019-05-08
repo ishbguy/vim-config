@@ -64,11 +64,11 @@ Plug 'w0rp/ale', {
             \ 'do': 'yaourt --noconfirm -S bear',
             \ }
 
-Plug 'universal-ctags/ctags', { 'do': './autogen.sh && ./configure && make' }
-Plug 'ludovicchabant/vim-gutentags', {
-            \ 'config': $vim_plugins_config_dir . '/vim-gutentags.vim',
-            \ 'do': 'yaourt --noconfirm -S global python-pygments',
-            \ }
+" Plug 'universal-ctags/ctags', { 'do': './autogen.sh && ./configure && make' }
+" Plug 'ludovicchabant/vim-gutentags', {
+"             \ 'config': $vim_plugins_config_dir . '/vim-gutentags.vim',
+"             \ 'do': 'yaourt --noconfirm -S global python-pygments',
+"             \ }
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'vim-scripts/OmniCppComplete', { 'config': $vim_plugins_config_dir . '/OmniCppComplete.vim' }
 Plug 'Shougo/neoinclude.vim'
