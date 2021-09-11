@@ -7,17 +7,17 @@ snippet start "start your work"
 
 # source guard
 [[ $${2:`!v substitute(toupper(expand('%:t:r')), '[^[:alnum:]]', '_', 'g')`}_SOURCED -eq 1 ]] && return
-declare -r $2_SOURCED=1
-declare -r $2_ABS_SRC="$(readlink -f "${BASH_SOURCE[0]}")"
-declare -r $2_ABS_DIR="$(dirname "$$2_ABS_SRC")"
+readonly $2_SOURCED=1
+readonly $2_ABS_SRC="$(readlink -f "${BASH_SOURCE[0]}")"
+readonly $2_ABS_DIR="$(dirname "$$2_ABS_SRC")"
 
-# utilities
-EXIT_CODE=0
-warn() { echo -e "$@" >&2; ((++EXIT_CODE)); return ${WERROR:-1}; }
-die() { echo -e "$@" >&2; exit $((++EXIT_CODE)); }
+# Utils
+$2_EXIT_CODE=0
+warn() { echo -e "$@" >&2; ((++$2_EXIT_CODE)); return ${WERROR:-1}; }
+die() { echo -e "$@" >&2; exit $((++$2_EXIT_CODE)); }
 debug() { [[ $DEBUG == 1 ]] && echo "$@" || true; }
 usage() { echo -e "$HELP"; }
-version() { echo -e "$PRONAME $VERSION"; }
+version() { echo -e "$PROGNAME $VERSION"; }
 defined() { declare -p "\$1" &>/dev/null; }
 definedf() { declare -f "\$1" &>/dev/null; }
 is_sourced() { [[ -n ${FUNCNAME[1]} && ${FUNCNAME[1]} != "main" ]]; }
@@ -27,8 +27,8 @@ has_tool() { hash "\$1" &>/dev/null; }
 ensure() {
     local cmd="\$1"; shift
     local -a info=($(caller 0))
-    (eval "$cmd" &>/dev/null) || die "${info[2]}:${info[0]}:${info[1]}:" \
-        "${FUNCNAME[0]} '$cmd' failed." "$@"
+    (eval "$cmd" &>/dev/null) || \
+       die "${info[2]}:${info[0]}:${info[1]}:${FUNCNAME[0]} '$cmd' failed. " "$@"
 }
 date_cmp() { echo "$(($(date -d "\$1" +%s) - $(date -d "\$2" +%s)))"; }
 tmpfd() { basename <(:); }
@@ -99,17 +99,17 @@ require_tool() { require has_tool "You need to install tools" "$@"; }
 inicfg() { require_tool git; git config --file "$@"; }
 
 ${3:`!v substitute(expand('%:t:r'), '[^[:alnum:]]', '_', 'g')`}() {
-    local PRONAME="$(basename "${BASH_SOURCE[0]}")"
+    local PROGNAME="$(basename "${BASH_SOURCE[0]}")"
     local VERSION="v0.0.1"
     local HELP=$(cat <<EOF
-$PRONAME $VERSION
-$PRONAME [-hvD] args
+$PROGNAME $VERSION
+$PROGNAME [-hvD] args
     
     -h  print this help message 
     -v  print version number
     -D  turn on debug mode
 
-This program is released under the terms of MIT License.
+This program is released under the terms of the MIT License.
 EOF
 )
     local -A opts=() args=()

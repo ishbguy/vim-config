@@ -7,6 +7,7 @@ let g:UltiSnipsEditSplit          = 'vertical'
 let g:UltiSnipsSnippetsDir        = $vim_home . '/snippet'
 let g:UltiSnipsSnippetDirectories = [g:UltiSnipsSnippetsDir, 'UltiSnips']
 let g:UltiSnipsEnableSnipMate     = 1
+let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit = g:UltiSnipsSnippetsDir
 
 " }}}
 
