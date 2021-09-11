@@ -8,7 +8,7 @@ endif
 
 " for version control, use vimrc in $HOME/.vim instead of .vimrc in $HOME
 let $vim_home = fnamemodify($MYVIMRC, ':h')
-let $vim_config_dir = $vim_home . '/configs'
+let $vim_config_dir = $vim_home . '/conf.d'
 let $vim_plugins_config_dir =  $vim_config_dir . '/plugins'
 let $vim_plugins_dir = $HOME . '/.vim-plugins'
 if executable('realpath')
