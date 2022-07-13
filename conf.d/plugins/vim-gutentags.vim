@@ -16,7 +16,7 @@ if executable('gtags-cscope') && executable('gtags')
     let g:gutentags_modules += ['gtags_cscope']
     let g:gutentags_auto_add_gtags_cscope = 0
     let $GTAGSLABEL = 'native-pygments'
-    let $GTAGSCONF = $vim_plugins_config_dir . '/gtags.conf'
+    let $GTAGSCONF = $vim_plug_conf_dir . '/gtags.conf'
     runtime config/plugins/gtags.vim
 endif
 
