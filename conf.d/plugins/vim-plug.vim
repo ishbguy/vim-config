@@ -10,16 +10,23 @@ call plug#begin($vim_plugins_dir)
 
 " layout & style
 Plug 'mhinz/vim-startify'
-Plug 'scrooloose/nerdtree', { 'config': $vim_plug_conf_dir . '/nerdtree.vim' }
 Plug 'vim-airline/vim-airline', { 'config': $vim_plug_conf_dir . '/vim-airline.vim' }
 Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
 Plug 'rhysd/vim-color-spring-night'
 Plug 'tomasr/molokai'
 
+" Project manager
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-signify'
+Plug 'dyng/ctrlsf.vim'
+Plug 'Yggdroot/LeaderF', { 'config': $vim_plug_conf_dir . '/LeaderF.vim', 'do': ':LeaderfInstallCExtension' }
+Plug 'skywind3000/asyncrun.vim', { 'config': $vim_plug_conf_dir . '/asyncrun.vim' }
+
 " jump & motion
 Plug 'konfekt/fastfold'
-Plug 'kshenoy/vim-signature', { 'config': $vim_plug_conf_dir . '/vim-signature.vim' }
+Plug 'kshenoy/vim-signature'
 Plug 'easymotion/vim-easymotion', { 'config': $vim_plug_conf_dir . '/vim-easymotion.vim' }
 
 " text manipulation
@@ -33,15 +40,8 @@ Plug 'Chiel92/vim-autoformat', { 'config': $vim_plug_conf_dir . '/vim-autoformat
 Plug 'honza/vim-snippets'
 Plug 'sirver/ultisnips', { 'config': $vim_plug_conf_dir . '/ultisnips.vim' }
 
-" Project manager
-Plug 'tpope/vim-fugitive', { 'config': $vim_plug_conf_dir . '/vim-fugitive.vim' }
-Plug 'airblade/vim-gitgutter'
-Plug 'dyng/ctrlsf.vim', { 'config': $vim_plug_conf_dir . '/ctrlsf.vim' }
-Plug 'Yggdroot/LeaderF', { 'config': $vim_plug_conf_dir . '/LeaderF.vim', 'do': ':LeaderfInstallCExtension' }
-Plug 'skywind3000/asyncrun.vim', { 'config': $vim_plug_conf_dir . '/asyncrun.vim' }
-
 " Completion & Syntax Checker
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'neoclide/coc.nvim', { 'branch': 'release', 'config': $vim_plug_conf_dir .'/coc.vim' }
 Plug 'w0rp/ale', { 'config': $vim_plug_conf_dir . '/ale.vim' }
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'vim-scripts/OmniCppComplete', { 'config': $vim_plug_conf_dir . '/OmniCppComplete.vim' }

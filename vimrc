@@ -24,7 +24,7 @@ runtime! lib/mylib.vim
 runtime! lib/man.vim
 
 source $vim_conf_dir/options.vim
-source $vim_conf_dir/keymap.vim
+source $vim_conf_dir/keymaps.vim
 source $vim_plug_conf_dir/vim-plug.vim
 
 if has('gui_running') || $DISPLAY !=# ''

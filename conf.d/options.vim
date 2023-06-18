@@ -7,6 +7,8 @@
 "This must be first, because it changes other options as a side effect.
 set nocompatible              " be iMproved, required
 
+set updatetime=300
+
 "Fonts settiings
 set autoread
 set encoding=utf-8

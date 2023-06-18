@@ -9,10 +9,6 @@ let g:UltiSnipsSnippetDirectories = [g:UltiSnipsSnippetsDir, 'UltiSnips']
 let g:UltiSnipsEnableSnipMate     = 1
 let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit = g:UltiSnipsSnippetsDir
 
-" }}}
-
-" ----- ultisnips ------------------------------ {{{
-
 let g:UltiSnipsExpandTrigger       = '<C-J>'
 let g:UltiSnipsJumpForwardTrigger  = '<C-J>'
 let g:UltiSnipsJumpBackwardTrigger = '<C-K>'
