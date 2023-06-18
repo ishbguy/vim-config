@@ -17,7 +17,7 @@ Plug 'rhysd/vim-color-spring-night'
 Plug 'tomasr/molokai'
 
 " Project manager
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'config': $vim_plug_conf_dir . '/nerdtree.vim' }
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'dyng/ctrlsf.vim'
