@@ -126,6 +126,27 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 " provide custom statusline: lightline.vim, vim-airline
 let g:airline#extension#coc#enabled = 1
 let g:airline#extension#coc#show_coc_status = 1
+let g:coc_global_extensions = [
+            \ 'coc-clangd',
+            \ 'coc-cmake',
+            \ 'coc-css',
+            \ 'coc-dictionary',
+            \ 'coc-git',
+            \ 'coc-html',
+            \ 'coc-json',
+            \ 'coc-lists',
+            \ 'coc-marketplace',
+            \ 'coc-perl',
+            \ 'coc-python',
+            \ 'coc-sh',
+            \ 'coc-sql',
+            \ 'coc-syntax',
+            \ 'coc-tag',
+            \ 'coc-tsserver',
+            \ 'coc-ultisnips',
+            \ 'coc-vimlsp',
+            \ 'coc-word',
+            \ ]
 
 " " Mappings for CoCList
 " " Show all diagnostics
