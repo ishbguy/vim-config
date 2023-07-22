@@ -18,7 +18,7 @@ let g:OmniCpp_DefaultNamespaces   = ['std', '_GLIBCXX_STD']
 
 " ----- omnicppcomplete ------------------------------ {{{
 
-inoremap <leader><leader> <C-X><C-O>
+" inoremap <leader><leader> <C-X><C-O>
 
 " }}}
 

@@ -13,7 +13,7 @@ let g:NERDTreeAutoDeleteBuffer = 1
 
 " ----- nerdtree ------------------------------ {{{
 
-nmap <Leader>fl :NERDTreeToggle<CR>
+nmap <Leader>F :NERDTreeToggle<CR>
 
 " }}}
 

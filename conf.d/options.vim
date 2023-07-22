@@ -43,6 +43,7 @@ set ruler
 set cursorline
 set cursorcolumn
 set number
+set relativenumber
 set cmdheight=1
 set scrolloff=0
 set sidescroll=0

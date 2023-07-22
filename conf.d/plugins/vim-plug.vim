@@ -22,7 +22,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'dyng/ctrlsf.vim'
 Plug 'Yggdroot/LeaderF', { 'config': $vim_plug_conf_dir . '/LeaderF.vim', 'do': ':LeaderfInstallCExtension' }
+Plug 'voldikss/LeaderF-floaterm'
+Plug 'voldikss/vim-floaterm', { 'config': $vim_plug_conf_dir . '/vim-floaterm.vim' }
 Plug 'skywind3000/asyncrun.vim', { 'config': $vim_plug_conf_dir . '/asyncrun.vim' }
+Plug 'skywind3000/asynctasks.vim', { 'config': $vim_plug_conf_dir . '/asynctasks.vim' }
+Plug 'skywind3000/vim-terminal-help', { 'config': $vim_plug_conf_dir . '/vim-terminal-help.vim' }
+Plug 'skywind3000/LeaderF-snippet', { 'config': $vim_plug_conf_dir . '/LeaderF-snippet.vim' }
+Plug 'skywind3000/vim-quickui', { 'config': $vim_plug_conf_dir . '/vim-quickui.vim' }
 
 " jump & motion
 Plug 'konfekt/fastfold'

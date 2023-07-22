@@ -2,7 +2,7 @@
 " Released under the terms of the MIT License.
 
 "Set the hotkey leader
-let g:mapleader = ';'
+let g:mapleader = "\<Space>"
 
 " ----- General ------------------------------ {{{
 
@@ -11,19 +11,16 @@ nmap <Leader>Q :q!<CR>
 nmap <Leader>W :w<CR>
 nmap <Leader>w :w<CR>
 
-"Try to run a shell command
-nmap <Leader>r  :!./%:r
-
-nmap <SPACE>    <C-F>
-vmap <SPACE>    <C-F>
+nmap <Space><Space>  <C-F>
+vmap <Space><Space>  <C-F>
 nmap <Leader>m  :<C-U>exe 'Man '.expand(v:count).' '. expand("<cword>")<CR>
-imap <Leader>D  <C-R>=strftime("%Y-%m-%d %H:%M:%S %z")<CR>
-nmap <Leader>D  :Dox<CR>
+" imap <Leader>D  <C-R>=strftime("%Y-%m-%d %H:%M:%S %z")<CR>
 nmap Y          y$
 nmap <Leader>x  ddp
 nmap <Leader>N  :nohlsearch<CR>
 nmap <F1>       :<C-U>call MyHelp(v:count)<CR>
 nmap <F4>       :call MyToggleMouse()<CR>
+nmap <F11>      :call ToggleFullscreen()<CR>
 
 " Don't use Ex mode, use Q for formatting
 map Q gqip
@@ -94,7 +91,6 @@ nmap <Leader>tn :tnext<CR>
 
 nmap <Leader>cp :cp<CR>
 nmap <Leader>cn :cn<CR>
-nmap <F11>      :call ToggleFullscreen()<CR>
 
 " }}}
 
