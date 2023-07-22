@@ -127,25 +127,25 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 let g:airline#extension#coc#enabled = 1
 let g:airline#extension#coc#show_coc_status = 1
 let g:coc_global_extensions = [
-            \ 'coc-clangd',
-            \ 'coc-cmake',
-            \ 'coc-css',
-            \ 'coc-dictionary',
-            \ 'coc-git',
-            \ 'coc-html',
-            \ 'coc-json',
             \ 'coc-lists',
             \ 'coc-marketplace',
-            \ 'coc-perl',
-            \ 'coc-python',
-            \ 'coc-sh',
-            \ 'coc-sql',
+            \ 'coc-dictionary',
+            \ 'coc-git',
             \ 'coc-syntax',
             \ 'coc-tag',
-            \ 'coc-tsserver',
             \ 'coc-ultisnips',
-            \ 'coc-vimlsp',
             \ 'coc-word',
+            \ 'coc-clangd',
+            \ 'coc-cmake',
+            \ 'coc-tsserver',
+            \ 'coc-css',
+            \ 'coc-html',
+            \ 'coc-json',
+            \ 'coc-perl',
+            \ 'coc-pyright',
+            \ 'coc-sh',
+            \ 'coc-sql',
+            \ 'coc-vimlsp',
             \ ]
 
 " " Mappings for CoCList
