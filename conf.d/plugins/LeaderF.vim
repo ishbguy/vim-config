@@ -33,7 +33,7 @@ let g:Lf_Gtagsconf = $vim_plug_conf_dir . '/gtags.conf'
 
 noremap <leader>fd :call PushTagStack()<CR>:<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
 noremap <leader>fr :call PushTagStack()<CR>:<C-U><C-R>=printf("Leaderf! gtags -r %s", expand("<cword>"))<CR><CR>
-noremap <leader>fx :call PushTagStack()<CR>:<C-U><C-R>=printf("Leaderf! gtags -x %s", expand("<cword>"))<CR><CR>
+noremap <leader>fg :call PushTagStack()<CR>:<C-U><C-R>=printf("Leaderf! gtags -g %s", expand("<cword>"))<CR><CR>
 noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
 noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
 noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>

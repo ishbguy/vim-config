@@ -37,10 +37,10 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " nmap <silent> gi <Plug>(coc-implementation)
 " nmap <silent> gr <Plug>(coc-references)
 
-nmap <silent> gd :call PushTagStack()<CR>:call CocAction('jumpDefinition')<CR>
-nmap <silent> gy :call PushTagStack()<CR>:call CocAction('jumpTypeDefinition')<CR>
-nmap <silent> gi :call PushTagStack()<CR>:call CocAction('jumpImplementation')<CR>
-nmap <silent> gr :call PushTagStack()<CR>:call CocAction('jumpReferences')<CR>
+nmap <silent> <leader>gd :call PushTagStack()<CR>:call CocAction('jumpDefinition')<CR>
+nmap <silent> <leader>gy :call PushTagStack()<CR>:call CocAction('jumpTypeDefinition')<CR>
+nmap <silent> <leader>gi :call PushTagStack()<CR>:call CocAction('jumpImplementation')<CR>
+nmap <silent> <leader>gr :call PushTagStack()<CR>:call CocAction('jumpReferences')<CR>
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call ShowDocumentation()<CR>
