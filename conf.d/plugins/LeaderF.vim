@@ -29,8 +29,11 @@ noremap go :<C-U>Leaderf! rg --recall<CR>
 " should use `Leaderf gtags --update` first
 let g:Lf_GtagsAutoGenerate = 1
 let g:Lf_Gtagslabel = 'native-pygments'
-noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+let g:Lf_Gtagsconf = $vim_plug_conf_dir . '/gtags.conf'
+
+noremap <leader>fd :call PushTagStack()<CR>:<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fr :call PushTagStack()<CR>:<C-U><C-R>=printf("Leaderf! gtags -r %s", expand("<cword>"))<CR><CR>
+noremap <leader>fx :call PushTagStack()<CR>:<C-U><C-R>=printf("Leaderf! gtags -x %s", expand("<cword>"))<CR><CR>
 noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
 noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
 noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>

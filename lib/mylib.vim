@@ -312,3 +312,14 @@ fun! ToggleFullscreen()
         call system("wmctrl -ir " . $WINID . " -b toggle,fullscreen")
     endif
 endf
+
+function! PushTagStack()
+    let tag = expand('<cword>')
+    let pos = [bufnr()] + getcurpos()[1:]
+    let item = {'bufnr': pos[0], 'from': pos, 'tagname': tag}
+    let winid = win_getid()
+    let stack = gettagstack(winid)
+    let stack['items'] = [item]
+    call settagstack(winid, stack, 't')
+endfunction
+

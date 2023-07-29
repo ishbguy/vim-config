@@ -2,7 +2,7 @@
 " Released under the terms of the MIT License.
 
 if executable('lazygit')
-    nmap <Leader>g :FloatermNew lazygit<CR>
+    nmap <Leader>G :FloatermNew lazygit<CR>
 endif
 
 noremap <leader>fF :Leaderf floaterm<CR>

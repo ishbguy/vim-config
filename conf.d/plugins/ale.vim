@@ -2,6 +2,8 @@
 " Released under the terms of the MIT License.
 " ----- ALE ------------------------------ {{{
 
+" Disable ALE when vim launched
+let g:ale_enabled = 0
 "let g:ale_sign_column_always = 1
 let g:ale_sign_error = 'E!'
 let g:ale_sign_warning = 'W!'

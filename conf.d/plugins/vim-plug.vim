@@ -49,8 +49,8 @@ Plug 'sirver/ultisnips', { 'config': $vim_plug_conf_dir . '/ultisnips.vim' }
 " Completion & Syntax Checker
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'config': $vim_plug_conf_dir .'/coc.vim' }
 Plug 'w0rp/ale', { 'config': $vim_plug_conf_dir . '/ale.vim' }
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'vim-scripts/OmniCppComplete', { 'config': $vim_plug_conf_dir . '/OmniCppComplete.vim' }
+" Plug 'octol/vim-cpp-enhanced-highlight'
+" Plug 'vim-scripts/OmniCppComplete', { 'config': $vim_plug_conf_dir . '/OmniCppComplete.vim' }
 Plug 'c9s/perlomni.vim'
 Plug 'aklt/plantuml-syntax'
 Plug 'parkr/vim-jekyll', { 'config': $vim_plug_conf_dir . '/vim-jekyll.vim' }

@@ -32,10 +32,15 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
+
+nmap <silent> gd :call PushTagStack()<CR>:call CocAction('jumpDefinition')<CR>
+nmap <silent> gy :call PushTagStack()<CR>:call CocAction('jumpTypeDefinition')<CR>
+nmap <silent> gi :call PushTagStack()<CR>:call CocAction('jumpImplementation')<CR>
+nmap <silent> gr :call PushTagStack()<CR>:call CocAction('jumpReferences')<CR>
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call ShowDocumentation()<CR>
@@ -165,5 +170,7 @@ let g:coc_global_extensions = [
 " nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " " Resume latest coc list
 " nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+let g:coc_config_home = $vim_plug_conf_dir
 
 " vim:set ft=vim ts=4 sw=4:
