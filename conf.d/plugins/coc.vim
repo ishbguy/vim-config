@@ -53,6 +53,8 @@ function! ShowDocumentation()
   endif
 endfunction
 
+nnoremap <silent> <leader>T :call CocAction('showOutline')<CR>
+
 " Highlight the symbol and its references when holding the cursor
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
