@@ -141,7 +141,6 @@ let g:coc_global_extensions = [
             \ 'coc-syntax',
             \ 'coc-tag',
             \ 'coc-ultisnips',
-            \ 'coc-word',
             \ 'coc-clangd',
             \ 'coc-cmake',
             \ 'coc-tsserver',
