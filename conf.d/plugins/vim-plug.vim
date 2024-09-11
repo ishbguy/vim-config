@@ -20,7 +20,7 @@ Plug 'tomasr/molokai'
 Plug 'scrooloose/nerdtree', { 'config': $vim_plug_conf_dir . '/nerdtree.vim' }
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
-Plug 'dyng/ctrlsf.vim'
+" Plug 'dyng/ctrlsf.vim', { 'config': $vim_plug_conf_dir . '/ctrlsf.vim' }
 Plug 'Yggdroot/LeaderF', { 'config': $vim_plug_conf_dir . '/LeaderF.vim', 'do': ':LeaderfInstallCExtension' }
 Plug 'voldikss/LeaderF-floaterm'
 Plug 'voldikss/vim-floaterm', { 'config': $vim_plug_conf_dir . '/vim-floaterm.vim' }
@@ -41,31 +41,35 @@ Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/vim-easy-align'
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi'
 Plug 'Chiel92/vim-autoformat', { 'config': $vim_plug_conf_dir . '/vim-autoformat.vim' }
 Plug 'honza/vim-snippets'
 Plug 'sirver/ultisnips', { 'config': $vim_plug_conf_dir . '/ultisnips.vim' }
 
 " Completion & Syntax Checker
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'config': $vim_plug_conf_dir .'/coc.vim' }
-Plug 'w0rp/ale', { 'config': $vim_plug_conf_dir . '/ale.vim' }
+Plug 'FittenTech/fittencode.vim', { 'config': $vim_plug_conf_dir . '/fittencode.vim' }
+" Plug 'Exafunction/codeium.vim', { 'config':$vim_plug_conf_dir . '/codeium.vim' }
+" Plug 'w0rp/ale', { 'config': $vim_plug_conf_dir . '/ale.vim' }
 " Plug 'octol/vim-cpp-enhanced-highlight'
 " Plug 'vim-scripts/OmniCppComplete', { 'config': $vim_plug_conf_dir . '/OmniCppComplete.vim' }
-Plug 'c9s/perlomni.vim'
+" Plug 'c9s/perlomni.vim'
 Plug 'aklt/plantuml-syntax'
-Plug 'parkr/vim-jekyll', { 'config': $vim_plug_conf_dir . '/vim-jekyll.vim' }
+" Plug 'parkr/vim-jekyll', { 'config': $vim_plug_conf_dir . '/vim-jekyll.vim' }
 " Markdown {{{
 Plug 'plasticboy/vim-markdown'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'dkarter/bullets.vim'
 Plug 'dhruvasagar/vim-table-mode'
 " }}}
+Plug 'girishji/devdocs.vim'
+
+call plug#end()
 
 if empty(glob($vim_plugins_dir . '/*'))
     PlugInstall
 endif
-
-call plug#end()
 
 " }}}
 
