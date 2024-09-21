@@ -56,6 +56,7 @@ Plug 'FittenTech/fittencode.vim', { 'config': $vim_plug_conf_dir . '/fittencode.
 " Plug 'vim-scripts/OmniCppComplete', { 'config': $vim_plug_conf_dir . '/OmniCppComplete.vim' }
 " Plug 'c9s/perlomni.vim'
 Plug 'aklt/plantuml-syntax'
+Plug 'hashivim/vim-terraform'
 " Plug 'parkr/vim-jekyll', { 'config': $vim_plug_conf_dir . '/vim-jekyll.vim' }
 " Markdown {{{
 Plug 'plasticboy/vim-markdown'
