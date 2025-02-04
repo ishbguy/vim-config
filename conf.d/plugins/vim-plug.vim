@@ -49,7 +49,7 @@ Plug 'sirver/ultisnips', { 'config': $vim_plug_conf_dir . '/ultisnips.vim' }
 
 " Completion & Syntax Checker
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'config': $vim_plug_conf_dir .'/coc.vim' }
-Plug 'FittenTech/fittencode.vim', { 'config': $vim_plug_conf_dir . '/fittencode.vim' }
+" Plug 'FittenTech/fittencode.vim', { 'config': $vim_plug_conf_dir . '/fittencode.vim' }
 " Plug 'Exafunction/codeium.vim', { 'config':$vim_plug_conf_dir . '/codeium.vim' }
 " Plug 'w0rp/ale', { 'config': $vim_plug_conf_dir . '/ale.vim' }
 " Plug 'octol/vim-cpp-enhanced-highlight'
@@ -57,6 +57,7 @@ Plug 'FittenTech/fittencode.vim', { 'config': $vim_plug_conf_dir . '/fittencode.
 " Plug 'c9s/perlomni.vim'
 Plug 'aklt/plantuml-syntax'
 Plug 'hashivim/vim-terraform'
+Plug 'nathangrigg/vim-beancount'
 " Plug 'parkr/vim-jekyll', { 'config': $vim_plug_conf_dir . '/vim-jekyll.vim' }
 " Markdown {{{
 Plug 'plasticboy/vim-markdown'

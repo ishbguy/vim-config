@@ -1,3 +1,10 @@
 {
     "inlayHint.display": false,
+    "languageserver": {
+        "beancount": {
+            "command": "beancount-language-server",
+            "filetypes": ["beancount"],
+            "rootPatterns": [".git/", "main.bean"]
+        }
+    }
 }
